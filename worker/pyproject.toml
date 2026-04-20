@@ -1,0 +1,24 @@
+[project]
+name = "observ-worker"
+version = "0.1.0"
+description = "RabbitMQ -> Elasticsearch worker"
+requires-python = ">=3.11"
+dependencies = [
+    "aio-pika>=9.4",
+    "elasticsearch>=8.13,<9",
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.2",
+    "structlog>=24.1",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["worker"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
