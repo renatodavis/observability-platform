@@ -42,9 +42,12 @@ class Settings(BaseSettings):
 
     @property
     def rabbitmq_url(self) -> str:
+        vhost = self.rabbitmq_vhost
+        if not vhost.startswith("/"):
+            vhost = f"/{vhost}"
         return (
             f"amqp://{self.rabbitmq_user}:{self.rabbitmq_pass}"
-            f"@{self.rabbitmq_host}:{self.rabbitmq_port}{self.rabbitmq_vhost}"
+            f"@{self.rabbitmq_host}:{self.rabbitmq_port}{vhost}"
         )
 
 
